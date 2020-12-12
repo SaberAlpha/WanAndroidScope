@@ -48,4 +48,5 @@ dependencies {
 
     //mvvmlib
     implementation project(path: ':mvvmlib')
+    implementation 'com.lxj:xpopup:2.2.8'
 }

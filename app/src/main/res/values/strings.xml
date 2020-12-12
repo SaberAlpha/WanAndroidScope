@@ -1,3 +1,71 @@
 <resources>
     <string name="app_name">WanAndroidScope</string>
+
+    <string name="sort">sort</string>
+    <string name="stars">stars</string>
+    <string name="forks">forks</string>
+    <string name="updated">updated</string>
+    <string name="last_version_tip">It\'s the latest version</string>
+    <string name="followers">followers</string>
+    <string name="joined">joined</string>
+    <string name="repositories">repositories</string>
+
+    <string name="best_match">Best match</string>
+    <string name="most_stars">Most stars</string>
+    <string name="fewest_stars">Fewest stars</string>
+    <string name="most_forks">Most forks</string>
+    <string name="fewest_forks">Fewest forks</string>
+    <string name="recently_updated">Recently updated</string>
+    <string name="least_recently_updated">Least recently updated</string>
+
+    <string name="most_followers">Most followers</string>
+    <string name="fewest_followers">Fewest followers</string>
+    <string name="most_recently_joined">Most recently joined</string>
+    <string name="least_recently_joined">Least recently joined</string>
+    <string name="most_repositories">Most repositories</string>
+    <string name="fewest_repositories">Fewest repositories</string>
+
+    <string name="sort_options">Sort options</string>
+    <string name="asc">asc</string>
+    <string name="desc">desc</string>
+
+    <string name="tips">Tips</string>
+    <string name="logout_message">Are you sure to exit?</string>
+    <string name="new_version_found">New version found</string>
+    <string name="update_message">Do you want to upgrade?</string>
+    <string name="cancel">cancel</string>
+    <string name="sure">sure</string>
+    <string name="empty_data">Empty Data</string>
+
+    <string name="downloading">Downloading</string>
+    <string name="sign_in">Sign in</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="profile">Profile</string>
+    <string name="about">About</string>
+    <string name="trend">Trend</string>
+    <string name="logout">Logout</string>
+    <string name="retry_load">retry load</string>
+    <string name="load_fail">Load Failed</string>
+
+    <string name="options">options</string>
+    <string name="save_picture">save picture</string>
+    <string name="save_picture_fail">save picture fail</string>
+    <string name="save_picture_success">save picture success</string>
+    <string name="save_picture_path">save picture success</string>
+    <string name="share_picture">share picture</string>
+    <string name="browser_open">Browser open</string>
+    <string name="copy_link">Copy link</string>
+    <string name="share">Share</string>
+    <string name="copied_to_pasteboard">Copied to pasteboard</string>
+
+    <string name="no_browser_clients">There are no browser clients installed.</string>
+    <string name="context_not_null_tip">please init context field in LoaderOptions</string>
+    <string name="url_not_null_tips">please init url field in LoaderOptions</string>
+
+    <string name="ic_font_email">&#xe607;</string>
+    <string name="ic_font_link">&#xe932;</string>
+    <string name="ic_font_browser">&#xe606;</string>
+    <string name="ic_font_github">&#xe690;</string>
+    <string name="ic_font_empty">&#xe639;</string>
 </resources>
