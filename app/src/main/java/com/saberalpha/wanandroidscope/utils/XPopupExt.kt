@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.blankj.utilcode.util.ToastUtils
 import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.enums.PopupPosition
 import com.saberalpha.wanandroidscope.R
 import com.saberalpha.wanandroidscope.app.AppContext
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -94,15 +95,16 @@ fun attachPopup(context: Context, view: View){
         .Builder(context)
         .atView(view)
         .borderRadius(0f)
-        .maxWidth(1200)
+            .offsetX(0)
+            .popupPosition(PopupPosition.Bottom)
         .asAttachList(
             arrayOf(
                 context.getString(R.string.best_match),
                 context.getString(R.string.most_followers),
                 context.getString(R.string.fewest_followers),
                 context.getString(R.string.most_recently_joined),
-            ), null
-        ) { position, text -> ToastUtils.showLong(text) }
+            ), null,{ position, text -> ToastUtils.showLong(text) }
+                ,R.layout.layout_xpopup_attach,R.layout._xpopup_adapter_text_match)
         .show()
 }
 
