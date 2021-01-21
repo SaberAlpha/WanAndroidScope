@@ -1,13 +1,22 @@
 package com.saberalpha.mvvmlib.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.*
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.blankj.utilcode.util.ToastUtils
+import com.saberalpha.mvvmlib.ext.createIntent
 import com.saberalpha.mvvmlib.utils.DialogUtils
+import com.saberalpha.mvvmlib.utils.loadinghelper.LoadingHelper
+import com.saberalpha.mvvmlib.utils.loadinghelper.ViewType
+import com.saberalpha.mvvmlib.utils.loadinghelper.adapter.ToolbarAdapter
+import org.jetbrains.anko.internals.AnkoInternals.createIntent
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -24,10 +33,13 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
     protected lateinit var binding: V
     protected lateinit var viewModel: VM
     private var viewModelId: Int? = null
+    private var loadingHelper: LoadingHelper? = null
+    private var toolbarAdapter: ToolbarAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViewDataBinding(savedInstanceState)
+        initLoadingHelper()
         initParam()
         initData()
         initClickEvent()
@@ -63,6 +75,20 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
 
     abstract fun initVariableId(): Int?
 
+    private fun initLoadingHelper(){
+        loadingHelper = LoadingHelper(this)
+        loadingHelper?.setOnReloadListener {
+
+        }
+    }
+
+    fun changeContentLoadingView(contentView: View){
+        loadingHelper = LoadingHelper(contentView)
+        loadingHelper?.setOnReloadListener {
+
+        }
+    }
+
     override fun initParam() {
 
     }
@@ -77,23 +103,64 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
 
     override fun initViewObservable() {
         viewModel.mStateLiveData.observe(this, Observer {
-            when(it){
+            when (it) {
                 LoadState -> showLoading()
                 DismissState -> dismissLoading()
                 SuccessState -> dismissLoading()
+                FinishEventState -> finish()
+                OnBackPressedEventState -> onBackPressed()
                 is ErrorState -> {
-                   dismissLoading()
+                    dismissLoading()
+                }
+                is ToastEventState -> {
+                    ToastUtils.showLong(it.message)
+                }
+                is StartActivityState->{
+                    startActivity(createIntent(this, it.activity, it.params))
                 }
             }
         })
     }
 
-    private fun dismissLoading() {
+    /**
+     * 配置标题栏
+     */
+    fun setToolbar(title: String, isShowBack: Boolean = true, menuId: Int? = null,onLeftClick:(()->Unit)? = null){
+        toolbarAdapter = ToolbarAdapter(title, isShowBack, menuId,{ item: MenuItem? ->
+            onOptionsItemSelected(
+                item!!
+            )
+        },onLeftClick)
+        loadingHelper?.register(
+            ViewType.TITLE,toolbarAdapter!!)
+
+        loadingHelper?.setDecorHeader(ViewType.TITLE)
+    }
+
+    fun setToolbarTitle(title: String){
+        toolbarAdapter?.setTitle(title)
+    }
+
+    open fun showLoadingView() = loadingHelper?.showLoadingView()
+
+    open fun showContentView() = loadingHelper?.showContentView()
+
+    open fun showErrorView() = loadingHelper?.showErrorView()
+
+    open fun showEmptyView() = loadingHelper?.showEmptyView()
+
+    /**
+     *隐藏弹框
+     */
+    fun dismissLoading() {
         DialogUtils.instance.dismissLoading()
     }
 
-    private fun showLoading() {
-        DialogUtils.instance.showLoading(this,this)
+    /**
+     * 显示弹框
+     */
+    fun showLoading() {
+        DialogUtils.instance.showLoading(this, this)
     }
 
     override fun onDestroy() {

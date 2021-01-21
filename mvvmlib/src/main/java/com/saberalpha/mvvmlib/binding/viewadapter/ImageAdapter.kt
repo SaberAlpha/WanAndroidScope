@@ -1,11 +1,9 @@
-package com.saberalpha.mvvmlib.binding
+package com.saberalpha.mvvmlib.binding.viewadapter
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 
 
 object ImageAdapter {
@@ -13,10 +11,7 @@ object ImageAdapter {
     @BindingAdapter(value = ["url", "placeholder"], requireAll = false)
     @JvmStatic
     fun setImageUrl(imageView: ImageView, url: String, placeholder: Int) {
-        Glide.with(imageView.context)
-            .load(url)
-            .apply(RequestOptions().placeholder(placeholder))
-            .into(imageView)
+
 
     }
 

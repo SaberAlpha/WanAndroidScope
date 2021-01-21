@@ -25,3 +25,18 @@ data class BannerBean(
     val type: Int,
     val url: String
 )
+
+data class BannerRes(
+    /**
+     * 图片集合
+     */
+    val images: List<String>,
+    /**
+     * 标题集合
+     */
+    val titles: List<String>,
+    /**
+     * url集合
+     */
+    val urls : List<String>
+)

@@ -45,19 +45,15 @@ ext {
 
     //依赖第三方配置
     dependencies = [
-            //glide图片加载
-            glide                       : "com.github.bumptech.glide:glide:4.9.0",
-            "glide-compiler"            : "com.github.bumptech.glide:compiler:4.9.0",
             //material-dialogs
-            "material-dialogs-lifecycle": "com.afollestad.material-dialogs:lifecycle:3.1.1",
-            "material-dialogs-core"     : "com.afollestad.material-dialogs:core:3.1.1",
+            "material-dialogs-lifecycle"                : "com.afollestad.material-dialogs:lifecycle:3.1.1",
+            "material-dialogs-core"                     : "com.afollestad.material-dialogs:core:3.1.1",
             //Utils
-            utilcodex                   : 'com.blankj:utilcodex:1.26.0',
-            banner                      : 'com.github.xiaohaibin:XBanner:androidx_v1.0.2',
-            'bottom-tab'                : 'me.majiajie:pager-bottom-tab-strip:2.3.0X',
-            BRVAH                       : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46',
-            bdclta                      : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.1.1',
-            'bdclta-rv'                 : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.1.1'
+            utilcodex                                   : 'com.blankj:utilcodex:1.26.0',
+            banner                                      : 'com.github.xiaohaibin:XBanner:androidx_v1.0.2',
+            'bottom-tab'                                : 'me.majiajie:pager-bottom-tab-strip:2.3.0X',
+            "bindingcollectionadapter"                  : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0',
+            "bindingcollectionadapter-recyclerview"     : 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
     ]
 
     androidxs = androidx.values()

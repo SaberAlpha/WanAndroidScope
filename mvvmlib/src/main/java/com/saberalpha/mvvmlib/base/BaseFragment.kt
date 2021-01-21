@@ -12,6 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.blankj.utilcode.util.ToastUtils
+import com.saberalpha.mvvmlib.ext.createIntent
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -122,8 +124,16 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel>:Fragment(),
                 LoadState -> showLoading()
                 DismissState -> dismissLoading()
                 SuccessState -> dismissLoading()
+                FinishEventState -> activity?.finish()
+                OnBackPressedEventState ->activity?.onBackPressed()
                 is ErrorState -> {
                     dismissLoading()
+                }
+                is ToastEventState -> {
+                    ToastUtils.showLong(it.message)
+                }
+                is StartActivityState->{
+                    startActivity(createIntent(requireContext(), it.activity, it.params))
                 }
             }
         })

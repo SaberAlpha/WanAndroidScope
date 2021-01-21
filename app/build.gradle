@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.saberalpha.wanandroidscope"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -49,4 +49,5 @@ dependencies {
     //mvvmlib
     implementation project(path: ':mvvmlib')
     implementation 'com.lxj:xpopup:2.2.8'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.5'
 }

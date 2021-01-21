@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WanAndroidScope</string>
+    <string name="app_name">玩Android</string>
 
     <string name="sort">sort</string>
     <string name="stars">stars</string>
@@ -29,17 +29,14 @@
     <string name="asc">asc</string>
     <string name="desc">desc</string>
 
-    <string name="tips">Tips</string>
     <string name="logout_message">Are you sure to exit?</string>
     <string name="new_version_found">New version found</string>
     <string name="update_message">Do you want to upgrade?</string>
-    <string name="cancel">cancel</string>
     <string name="sure">sure</string>
     <string name="empty_data">Empty Data</string>
 
     <string name="downloading">Downloading</string>
     <string name="sign_in">Sign in</string>
-    <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="profile">Profile</string>
     <string name="about">About</string>
@@ -56,16 +53,58 @@
     <string name="share_picture">share picture</string>
     <string name="browser_open">Browser open</string>
     <string name="copy_link">Copy link</string>
-    <string name="share">Share</string>
     <string name="copied_to_pasteboard">Copied to pasteboard</string>
 
     <string name="no_browser_clients">There are no browser clients installed.</string>
     <string name="context_not_null_tip">please init context field in LoaderOptions</string>
     <string name="url_not_null_tips">please init url field in LoaderOptions</string>
 
-    <string name="ic_font_email">&#xe607;</string>
-    <string name="ic_font_link">&#xe932;</string>
-    <string name="ic_font_browser">&#xe606;</string>
-    <string name="ic_font_github">&#xe690;</string>
-    <string name="ic_font_empty">&#xe639;</string>
+
+    <string name="menu_collect">我的收藏</string>
+    <string name="menu_logout">退出登录</string>
+    <string name="menu_about">关于</string>
+    <string name="exit_app">再次点击退出程序</string>
+
+    <string name="navigation_home">首页</string>
+    <string name="navigation_wechat">公众号</string>
+    <string name="navigation_system">体系</string>
+    <string name="navigation_navigation">导航</string>
+    <string name="navigation_project">项目</string>
+
+    <string name="author">作者</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="repassword">确认密码</string>
+    <string name="login">登录</string>
+    <string name="regist">注册</string>
+    <string name="go_regist">没有账号 去注册</string>
+    <string name="go_login">已有账号 去登录</string>
+    <string name="password_ensure_error">前后密码不一致</string>
+    <string name="regist_success">注册成功</string>
+
+    <string name="collect">收藏</string>
+    <string name="hot_search">热门搜索</string>
+    <string name="search_history">搜索历史</string>
+
+    <string name="system_top_menu_in">点击进入 ></string>
+
+    <string name="license">开源许可</string>
+    <string name="github">Github</string>
+    <string name="star">go Star</string>
+    <string name="jianshu">简书</string>
+    <string name="version">版本</string>
+    <string name="cache">缓存</string>
+    <string name="github_url">https://github.com/KKaKa/WanAndroid</string>
+    <string name="jianshu_url">https://www.jianshu.com/u/8f6f557a4814</string>
+
+    <string name="share">分享</string>
+    <string name="share_type_title">分享专题</string>
+    <string name="share_type_url">%1$s 分享【%2$s】：%3$s</string>
+
+    <string name="tips">温馨提示</string>
+    <string name="ensure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="ensure_clear_cache">确定清除缓存吗?</string>
+
+
 </resources>

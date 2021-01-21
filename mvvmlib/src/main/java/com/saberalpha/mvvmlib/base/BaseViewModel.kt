@@ -1,6 +1,8 @@
 package com.saberalpha.mvvmlib.base
 
+import android.app.Activity
 import android.app.Application
+import androidx.databinding.ObservableInt
 import androidx.lifecycle.*
 import com.saberalpha.mvvmlib.network.ExceptionHandle
 import com.saberalpha.mvvmlib.network.ResponseThrowable
@@ -38,6 +40,44 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
      */
     fun dismissLoading(){
         mStateLiveData.value = DismissState
+    }
+
+    /**
+     * 页面跳转
+     */
+    inline fun <reified T : Activity> startActivity(vararg params: Pair<String, Any?>) {
+        mStateLiveData.value = StartActivityState(T::class.java,params)
+    }
+
+    /**
+     * 结束页面
+     */
+    fun finish(){
+        mStateLiveData.value = FinishEventState
+    }
+
+    /**
+     * 返回上一级
+     */
+    fun onBackPressed(){
+        mStateLiveData.value = OnBackPressedEventState
+    }
+
+    /**
+     * 刷新显示
+     */
+    fun showRefresh(state: Int,stateField : ObservableInt){
+        if (state != -1) return
+        stateField.set(state)
+        stateField.notifyChange()
+    }
+
+    /**
+     * 刷新加载取消
+     */
+    fun dismissRefreshLoadMore(page: Int,stateField : ObservableInt){
+        stateField.set(page)
+        stateField.notifyChange()
     }
 
     /**

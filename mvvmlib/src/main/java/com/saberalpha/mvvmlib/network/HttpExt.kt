@@ -18,7 +18,7 @@ import com.saberalpha.mvvmlib.network.Result
  *
  */
 
-public fun <T> Flow<BaseResult<T>>.subscribe(scope: CoroutineScope,success: (T) -> Unit,
+public fun <T> Flow<BaseResult<T>>.subscribe(scope: CoroutineScope,success: (T?) -> Unit,
                                          onServerError: (ResponseThrowable) -> Unit = {}){
     this.onEach {
             when(it.errorCode){

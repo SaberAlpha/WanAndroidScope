@@ -23,13 +23,6 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     val textField = ObservableField<String>("Hello World!")
 
-    fun testClick(){
-        listOf(1,2,3,4).forEach {
-            textField.set("$it")
-        }
-        getBanner()
-    }
-
     fun getBanner(){
         NetworkManager.instance.getBanner()
             .onStart { showLoading() }
