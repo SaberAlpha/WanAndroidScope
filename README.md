@@ -5,6 +5,32 @@
 - 使用到的 JetPack组件有 LiveData 、 ViewModel 、 Lifecycle 、 DataBinding 、 Navigation
 - 使用协程Flow代替rxjava,开发更加顺滑
 
+# 核心代码
+### 使用Flow代替rxjava进行网络请求
+```
+     public fun <T> Flow<BaseResult<T>>.subscribe(scope: CoroutineScope,success: (T?) -> Unit,
+                                              onServerError: (ResponseThrowable) -> Unit = {}){
+         this.onEach {
+                 when(it.errorCode){
+                     0->success(it.data)
+                 }
+             }.catch {
+                 val exception = ExceptionHandle.handleException(it)
+                 onServerError(exception)
+                 LogUtils.d("error",exception.message)
+             }
+             .launchIn(scope)
+     }
+
+    
+    NetworkManager.instance.getBanner()
+                .onStart { showLoading() }
+                .onCompletion { dismissLoading() }
+                .subscribe(viewModelScope,{
+                    
+                })
+```
+
 ### 已有功能
 
 - 首页最新文章

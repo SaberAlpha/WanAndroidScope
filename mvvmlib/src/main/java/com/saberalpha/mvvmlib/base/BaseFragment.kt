@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.blankj.utilcode.util.ToastUtils
 import com.saberalpha.mvvmlib.ext.createIntent
+import com.saberalpha.mvvmlib.utils.loadinghelper.LoadingHelper
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -33,6 +34,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel>:Fragment(),
 
     //是否第一次加载
     private var isFirst: Boolean = true
+    private var loadingHelper: LoadingHelper? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +60,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel>:Fragment(),
         viewModelId?.let { binding.setVariable(it, viewModel) }
         //让ViewModel拥有View的生命周期感应
         viewLifecycleOwner.lifecycle.addObserver(viewModel)
+        initLoadingHelper(binding.root)
         return binding.root
     }
 
@@ -77,6 +80,13 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel>:Fragment(),
         initData()
         initClickEvent()
         initViewObservable()
+    }
+
+    private fun initLoadingHelper(view: View){
+        loadingHelper = LoadingHelper(view)
+        loadingHelper?.setOnReloadListener {
+
+        }
     }
 
     override fun onDestroyView() {
@@ -146,6 +156,14 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel>:Fragment(),
     private fun showLoading() {
 
     }
+
+    open fun showLoadingView() = loadingHelper?.showLoadingView()
+
+    open fun showContentView() = loadingHelper?.showContentView()
+
+    open fun showErrorView() = loadingHelper?.showErrorView()
+
+    open fun showEmptyView() = loadingHelper?.showEmptyView()
 
 
 }

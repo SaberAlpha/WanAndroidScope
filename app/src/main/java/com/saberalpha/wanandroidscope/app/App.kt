@@ -1,8 +1,12 @@
 package com.saberalpha.wanandroidscope.app
 
 import android.app.Application
-import android.content.Context
 import android.content.ContextWrapper
+import com.saberalpha.mvvmlib.utils.loadinghelper.LoadingHelper
+import com.saberalpha.mvvmlib.utils.loadinghelper.ViewType
+import com.saberalpha.mvvmlib.utils.loadinghelper.adapter.EmptyAdapter
+import com.saberalpha.mvvmlib.utils.loadinghelper.adapter.ErrorAdapter
+import com.saberalpha.mvvmlib.utils.loadinghelper.adapter.LoadingAdapter
 
 /**
  * File: App
@@ -20,6 +24,11 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         mApplication = this
+        LoadingHelper.setDefaultAdapterPool {
+            register(ViewType.LOADING, LoadingAdapter())
+            register(ViewType.ERROR, ErrorAdapter())
+            register(ViewType.EMPTY, EmptyAdapter())
+        }
     }
 
 }
